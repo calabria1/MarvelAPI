@@ -12,14 +12,16 @@ const url = `http://gateway.marvel.com/v1/public/comics?ts=${timeStamp}&apikey=$
         json.data.results.forEach(element => {
             const titulo = element.title;
             const foto = element.thumbnail.path + '.' + element.thumbnail.extension;
+            element.textObjects.forEach(descricaoObj => {
+                const descricao = descricaoObj.text;
+                console.log(json);
+           
 
             let htmlContent = document.querySelector('.nome');
-            htmlContent.innerHTML  += `<div><h1>${titulo}</h1><img src="${foto}" alt="${titulo}" /><hr/></div>`;
+            htmlContent.innerHTML  += `<div><h1>${titulo}</h1><img src="${foto}" alt="${titulo}" /><h1 class="descricao">${descricao}</h1><hr/></div>`;
             
+        });
 
-            
-        
-            
         });    
     })
     
